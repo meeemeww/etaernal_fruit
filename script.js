@@ -13,6 +13,11 @@ function getUserCollectedKey() {
     return username ? `collectedItems_${username}` : 'collectedItems';
 }
 
+function getUserCollectedOresKey() {
+    const username = getCurrentUsername();
+    return username ? `collectedOres_${username}` : 'collectedOres';
+}
+
 function getUsers() {
     const users = localStorage.getItem('users');
     return users ? JSON.parse(users) : [];
@@ -248,6 +253,15 @@ function collectOreWithFruit(element, oreType) {
     // ปิดการคลิกซ้ำ
     element.style.pointerEvents = 'none';
 
+    // บันทึก ID ของแร่ที่ถูกเก็บแล้ว
+    const collectedOreId = element.id;
+    const collectedOresKey = getUserCollectedOresKey();
+    let collectedOres = JSON.parse(localStorage.getItem(collectedOresKey)) || [];
+    if (!collectedOres.includes(collectedOreId)) {
+        collectedOres.push(collectedOreId);
+        localStorage.setItem(collectedOresKey, JSON.stringify(collectedOres));
+    }
+
     // กำหนดผลไม้ที่ได้ตามประเภท Ore
     let fruitImage;
     
@@ -333,11 +347,11 @@ function collectOreWithFruit(element, oreType) {
     // เพิ่มแร่เข้า inventory
     const inventoryKey = getUserInventoryKey();
     let inventory = JSON.parse(localStorage.getItem(inventoryKey)) || [];
-    const oreId = `ore_${oreType}_${Date.now()}`;
+    const inventoryOreId = `ore_${oreType}_${Date.now()}`;
     const fruitName = fruitImage.replace('.png', '');
     
     inventory.push({
-        id: oreId,
+        id: inventoryOreId,
         name: fruitName,
         image: `image/${fruitImage}`,
         type: 'ore',

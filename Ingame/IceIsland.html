@@ -166,15 +166,15 @@
 
         <!-- Ores -->
         <div class="ore" id="ore-1" onclick="collectOreWithFruit(this, 'Frame')">
-            <img src="../image/ice_mineral.png" alt="Ice Ore">
+            <img src="../image/ice-mineral.png" alt="Ice Ore">
         </div>
 
         <div class="ore" id="ore-2" onclick="collectOreWithFruit(this, 'Frame')">
-            <img src="../image/ice_mineral.png" alt="Ice Ore">
+            <img src="../image/ice-mineral.png" alt="Ice Ore">
         </div>
 
         <div class="ore" id="ore-3" onclick="collectOreWithFruit(this, 'Frame')">
-            <img src="../image/ice_mineral.png" alt="Ice Ore">
+            <img src="../image/ice-mineral.png" alt="Ice Ore">
         </div>
     </div>
 
@@ -199,6 +199,19 @@
         }
 
         createSnowflakes();
+
+        // ซ่อนแร่ที่เก็บไปแล้วเมื่อโหลดหน้า
+        window.addEventListener('DOMContentLoaded', () => {
+            const collectedOresKey = getUserCollectedOresKey();
+            const collectedOres = JSON.parse(localStorage.getItem(collectedOresKey)) || [];
+            
+            collectedOres.forEach(oreId => {
+                const oreElement = document.getElementById(oreId);
+                if (oreElement) {
+                    oreElement.style.display = 'none';
+                }
+            });
+        });
     </script>
 </body>
 

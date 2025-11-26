@@ -54,8 +54,7 @@
 
         /* Icons */
         #Marble_icon,
-        #Book_icon
-         {
+        #Book_icon {
             position: fixed;
             cursor: pointer;
             z-index: 100;
@@ -76,6 +75,98 @@
         #Marble_icon:hover,
         #Book_icon:hover {
             transform: scale(1.1);
+        }
+
+        /* Large Desktop (2560px and above) */
+        @media (min-width: 2560px) {
+            .back-button {
+                width: 90px;
+                height: 90px;
+                font-size: 36px;
+                top: 30px;
+                left: 30px;
+            }
+
+            #Marble_icon {
+                bottom: 30px;
+                left: 450px;
+                width: 220px;
+            }
+
+            #Book_icon {
+                top: 550px;
+                right: 650px;
+                width: 270px;
+            }
+        }
+
+        /* Standard Desktop (1920px - 2559px) */
+        @media (min-width: 1920px) and (max-width: 2559px) {
+            .back-button {
+                width: 75px;
+                height: 75px;
+                font-size: 30px;
+                top: 25px;
+                left: 25px;
+            }
+
+            #Marble_icon {
+                bottom: 25px;
+                left: 380px;
+                width: 190px;
+            }
+
+            #Book_icon {
+                top: 480px;
+                right: 580px;
+                width: 240px;
+            }
+        }
+
+        /* Desktop (1366px - 1919px) */
+        @media (min-width: 1366px) and (max-width: 1919px) {
+            .back-button {
+                width: 65px;
+                height: 65px;
+                font-size: 26px;
+                top: 20px;
+                left: 20px;
+            }
+
+            #Marble_icon {
+                bottom: 20px;
+                left: 300px;
+                width: 160px;
+            }
+
+            #Book_icon {
+                top: 400px;
+                right: 450px;
+                width: 200px;
+            }
+        }
+
+        /* Small Desktop (1025px - 1365px) */
+        @media (min-width: 1025px) and (max-width: 1365px) {
+            .back-button {
+                width: 55px;
+                height: 55px;
+                font-size: 22px;
+                top: 15px;
+                left: 15px;
+            }
+
+            #Marble_icon {
+                bottom: 15px;
+                left: 250px;
+                width: 140px;
+            }
+
+            #Book_icon {
+                top: 350px;
+                right: 380px;
+                width: 180px;
+            }
         }
 
         /* Popup styling (เหมือน Profile) */
@@ -121,6 +212,111 @@
             background: transparent;
             transform: none;
         }
+
+        /* Desktop Responsive for Mixing Popup */
+        /* Large Desktop (2560px and above) */
+        @media (min-width: 2560px) {
+            #MarblePopup .popup-content {
+                width: 1600px !important;
+                max-width: 1600px !important;
+            }
+
+            #MarblePopup #fruit-grid,
+            #MarblePopup #ore-grid {
+                width: 15% !important;
+                height: 23% !important;
+            }
+
+            #MarblePopup #result-grid {
+                width: 13% !important;
+                height: 19% !important;
+            }
+
+            #MarblePopup .popup-content > div[onclick*="closePopup"] {
+                width: 8% !important;
+                height: 12% !important;
+                top: 4.5% !important;
+                right: 5.5% !important;
+            }
+        }
+
+        /* Standard Desktop (1920px - 2559px) */
+        @media (min-width: 1920px) and (max-width: 2559px) {
+            #MarblePopup .popup-content {
+                width: 1400px !important;
+                max-width: 1400px !important;
+            }
+
+            #MarblePopup #fruit-grid,
+            #MarblePopup #ore-grid {
+                width: 14.5% !important;
+                height: 22.5% !important;
+            }
+
+            #MarblePopup #result-grid {
+                width: 12.5% !important;
+                height: 18.5% !important;
+            }
+
+            #MarblePopup .popup-content > div[onclick*="closePopup"] {
+                width: 7.5% !important;
+                height: 11.5% !important;
+                top: 4.8% !important;
+                right: 5.8% !important;
+            }
+        }
+
+        /* Desktop (1366px - 1919px) */
+        @media (min-width: 1366px) and (max-width: 1919px) {
+            #MarblePopup .popup-content {
+                width: 1200px !important;
+                max-width: 1200px !important;
+            }
+
+            #MarblePopup #fruit-grid,
+            #MarblePopup #ore-grid {
+                width: 14% !important;
+                height: 22% !important;
+            }
+
+            #MarblePopup #result-grid {
+                width: 12% !important;
+                height: 18% !important;
+            }
+
+            #MarblePopup .popup-content > div[onclick*="closePopup"] {
+                width: 7% !important;
+                height: 11% !important;
+                top: 5% !important;
+                right: 6% !important;
+            }
+        }
+
+        /* Small Desktop (1025px - 1365px) */
+        @media (min-width: 1025px) and (max-width: 1365px) {
+            #MarblePopup .popup-content {
+                width: 1000px !important;
+                max-width: 1000px !important;
+            }
+
+            #MarblePopup #fruit-grid,
+            #MarblePopup #ore-grid {
+                width: 14% !important;
+                height: 22% !important;
+            }
+
+            #MarblePopup #result-grid {
+                width: 12% !important;
+                height: 18% !important;
+            }
+
+            #MarblePopup .popup-content > div[onclick*="closePopup"] {
+                width: 7% !important;
+                height: 11% !important;
+                top: 5% !important;
+                right: 6% !important;
+            }
+        }
     </style>
 </head>
 
@@ -138,7 +334,7 @@
     <!-- Popups -->
     <div id="MarblePopup" class="popup">
         <div class="popup-content" style="width: min(95vw, 1400px); max-width: 1400px; position: relative;">
-            <img src="../image/mixing.png" alt="Marble" style="width: 100%; height: auto; object-fit: contain;">
+            <img src="../image/mixing.png?v=20251126" alt="Marble" style="width: 100%; height: auto; object-fit: contain;">
             <!-- Fruit Selection Grid -->
             <div id="fruit-grid" style="position: absolute; top: 22%; left: 14%; width: 14%; height: 22%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
             </div>

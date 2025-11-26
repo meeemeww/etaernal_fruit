@@ -177,20 +177,20 @@
 
         <!-- Light Ores (left side) -->
         <div class="ore light" id="ore-light-1" onclick="collectOreWithFruit(this, 'Light')">
-            <img src="../image/2d_gold_element.png" alt="Light Ore">
+            <img src="../image/2d-gold-element.png" alt="Light Ore">
         </div>
 
         <div class="ore light" id="ore-light-2" onclick="collectOreWithFruit(this, 'Light')">
-            <img src="../image/2d_gold_element.png" alt="Light Ore">
+            <img src="../image/2d-gold-element.png" alt="Light Ore">
         </div>
 
         <!-- Dark Ores (right side) -->
         <div class="ore dark" id="ore-dark-1" onclick="collectOreWithFruit(this, 'Dark')">
-            <img src="../image/2d_black_element.png" alt="Dark Ore">
+            <img src="../image/2d-black-element.png" alt="Dark Ore">
         </div>
 
         <div class="ore dark" id="ore-dark-2" onclick="collectOreWithFruit(this, 'Dark')">
-            <img src="../image/2d_black_element.png" alt="Dark Ore">
+            <img src="../image/2d-black-element.png" alt="Dark Ore">
         </div>
     </div>
 
@@ -199,6 +199,19 @@
         function goBack() {
             window.location.href = '../game.html';
         }
+
+        // ซ่อนแร่ที่เก็บไปแล้วเมื่อโหลดหน้า
+        window.addEventListener('DOMContentLoaded', () => {
+            const collectedOresKey = getUserCollectedOresKey();
+            const collectedOres = JSON.parse(localStorage.getItem(collectedOresKey)) || [];
+            
+            collectedOres.forEach(oreId => {
+                const oreElement = document.getElementById(oreId);
+                if (oreElement) {
+                    oreElement.style.display = 'none';
+                }
+            });
+        });
     </script>
 </body>
 

@@ -132,7 +132,7 @@
             pointer-events: none;
         }
 
-        /* Island positions */
+        /* Island positions - Base Desktop */
         #earth-island {
             top: 8%;
             right: 12%;
@@ -168,6 +168,186 @@
         #ice-island {
             bottom: 8%;
             left: 80%;
+        }
+
+        /* Large Desktop (2560px and above) */
+        @media (min-width: 2560px) {
+            .logo img {
+                width: 240px;
+            }
+
+            .island {
+                width: 200px;
+                height: 200px;
+            }
+
+            .inventory-button img,
+            .pot-button img {
+                width: 110px;
+                height: 110px;
+            }
+
+            .profile-button img {
+                width: 90px;
+                height: 90px;
+            }
+
+            .info-button img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .inventory-button {
+                top: 170px;
+                left: 30px;
+            }
+
+            .profile-button {
+                top: 185px;
+                left: 145px;
+            }
+
+            .pot-button {
+                top: 170px;
+                left: 240px;
+            }
+        }
+
+        /* Standard Desktop (1920px - 2559px) */
+        @media (min-width: 1920px) and (max-width: 2559px) {
+            .logo img {
+                width: 210px;
+            }
+
+            .island {
+                width: 175px;
+                height: 175px;
+            }
+
+            .inventory-button img,
+            .pot-button img {
+                width: 95px;
+                height: 95px;
+            }
+
+            .profile-button img {
+                width: 75px;
+                height: 75px;
+            }
+
+            .info-button img {
+                width: 70px;
+                height: 70px;
+            }
+
+            .inventory-button {
+                top: 150px;
+                left: 25px;
+            }
+
+            .profile-button {
+                top: 160px;
+                left: 125px;
+            }
+
+            .pot-button {
+                top: 150px;
+                left: 205px;
+            }
+        }
+
+        /* Desktop (1366px - 1919px) */
+        @media (min-width: 1366px) and (max-width: 1919px) {
+            .logo img {
+                width: 180px;
+            }
+
+            .island {
+                width: 150px;
+                height: 150px;
+            }
+
+            .inventory-button img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .profile-button img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .pot-button img {
+                width: 70px;
+                height: 70px;
+            }
+
+            .info-button img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .inventory-button {
+                top: 130px;
+                left: 20px;
+            }
+
+            .profile-button {
+                top: 140px;
+                left: 100px;
+            }
+
+            .pot-button {
+                top: 130px;
+                left: 165px;
+            }
+        }
+
+        /* Small Desktop (1025px - 1365px) */
+        @media (min-width: 1025px) and (max-width: 1365px) {
+            .logo img {
+                width: 160px;
+            }
+
+            .island {
+                width: 130px;
+                height: 130px;
+            }
+
+            .inventory-button img {
+                width: 70px;
+                height: 70px;
+            }
+
+            .profile-button img {
+                width: 55px;
+                height: 55px;
+            }
+
+            .pot-button img {
+                width: 65px;
+                height: 65px;
+            }
+
+            .info-button img {
+                width: 55px;
+                height: 55px;
+            }
+
+            .inventory-button {
+                top: 115px;
+                left: 18px;
+            }
+
+            .profile-button {
+                top: 125px;
+                left: 90px;
+            }
+
+            .pot-button {
+                top: 115px;
+                left: 150px;
+            }
         }
 
         /* Mobile & Tablet Responsive */
@@ -403,9 +583,9 @@
             right: 23%;            
             font-size: clamp(20px, 2vw, 32px);       
             font-weight: bold;
-            color: transparent;      /* ตัวอักษรโปร่งใส (ไม่เห็น) */
+            color: transparent;
             cursor: pointer;
-            background: transparent; /* ปุ่มโปร่งใสทั้งหมด */
+            background: transparent;
             border: none;
             width: clamp(40px, 3.5vw, 60px);           
             height: clamp(40px, 3.5vw, 60px);         
@@ -413,15 +593,189 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: none;       /* เอา transition ออก เพื่อไม่มีเอฟเฟกต์ */
+            transition: none;
             z-index: 1001;
             outline: none;
             box-shadow: none;
         }
 
         .close-btn:hover {
-            background: transparent; /* ไม่มี hover ให้เห็น */
+            background: transparent;
             transform: none;
+        }
+
+        /* Profile Popup Content Sizing */
+        .profile-popup-content {
+            width: min(90vw, 1400px);
+            max-width: 1400px;
+        }
+
+        /* Profile Grid Default Positions */
+        #profile-grid {
+            top: 27%;
+            left: 58%;
+            width: 9%;
+            height: 15%;
+        }
+
+        #profile-grid-2 {
+            top: 27%;
+            left: 73%;
+            width: 9%;
+            height: 15%;
+        }
+
+        #profile-grid-3 {
+            top: 48%;
+            left: 58%;
+            width: 9%;
+            height: 15%;
+        }
+
+        #profile-grid-4 {
+            top: 48%;
+            left: 73%;
+            width: 9%;
+            height: 15%;
+        }
+
+        #profile-grid-5 {
+            top: 69%;
+            left: 58%;
+            width: 9%;
+            height: 15%;
+        }
+
+        #profile-grid-6 {
+            top: 69%;
+            left: 73%;
+            width: 9%;
+            height: 15%;
+        }
+
+        /* Desktop Responsive for Popups */
+        /* Large Desktop (2560px and above) */
+        @media (min-width: 2560px) {
+            .close-btn {
+                width: 70px;
+                height: 70px;
+                font-size: 36px;
+            }
+
+            .profile-popup-content {
+                width: 1600px;
+                max-width: 1600px;
+            }
+
+            #profile-grid,
+            #profile-grid-2,
+            #profile-grid-3,
+            #profile-grid-4,
+            #profile-grid-5,
+            #profile-grid-6 {
+                width: 10%;
+                height: 16%;
+            }
+
+            #profile-grid { top: 26.5%; left: 57.5%; }
+            #profile-grid-2 { top: 26.5%; left: 72.5%; }
+            #profile-grid-3 { top: 47.5%; left: 57.5%; }
+            #profile-grid-4 { top: 47.5%; left: 72.5%; }
+            #profile-grid-5 { top: 68.5%; left: 57.5%; }
+            #profile-grid-6 { top: 68.5%; left: 72.5%; }
+        }
+
+        /* Standard Desktop (1920px - 2559px) */
+        @media (min-width: 1920px) and (max-width: 2559px) {
+            .close-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 32px;
+            }
+
+            .profile-popup-content {
+                width: 1400px;
+                max-width: 1400px;
+            }
+
+            #profile-grid,
+            #profile-grid-2,
+            #profile-grid-3,
+            #profile-grid-4,
+            #profile-grid-5,
+            #profile-grid-6 {
+                width: 9.5%;
+                height: 15.5%;
+            }
+
+            #profile-grid { top: 26.8%; left: 57.8%; }
+            #profile-grid-2 { top: 26.8%; left: 72.8%; }
+            #profile-grid-3 { top: 47.8%; left: 57.8%; }
+            #profile-grid-4 { top: 47.8%; left: 72.8%; }
+            #profile-grid-5 { top: 68.8%; left: 57.8%; }
+            #profile-grid-6 { top: 68.8%; left: 72.8%; }
+        }
+
+        /* Desktop (1366px - 1919px) */
+        @media (min-width: 1366px) and (max-width: 1919px) {
+            .close-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 28px;
+            }
+
+            .profile-popup-content {
+                width: 1200px;
+                max-width: 1200px;
+            }
+
+            #profile-grid,
+            #profile-grid-2,
+            #profile-grid-3,
+            #profile-grid-4,
+            #profile-grid-5,
+            #profile-grid-6 {
+                width: 9%;
+                height: 15%;
+            }
+
+            #profile-grid { top: 27%; left: 58%; }
+            #profile-grid-2 { top: 27%; left: 73%; }
+            #profile-grid-3 { top: 48%; left: 58%; }
+            #profile-grid-4 { top: 48%; left: 73%; }
+            #profile-grid-5 { top: 69%; left: 58%; }
+            #profile-grid-6 { top: 69%; left: 73%; }
+        }
+
+        /* Small Desktop (1025px - 1365px) */
+        @media (min-width: 1025px) and (max-width: 1365px) {
+            .close-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 24px;
+            }
+
+            .profile-popup-content {
+                width: 1000px;
+                max-width: 1000px;
+            }
+
+            #profile-grid,
+            #profile-grid-2,
+            #profile-grid-3,
+            #profile-grid-4,
+            #profile-grid-5,
+            #profile-grid-6 {
+                width: 9%;
+                height: 15%;
+            }
+
+            #profile-grid { top: 27.2%; left: 58.2%; }
+            #profile-grid-2 { top: 27.2%; left: 73.2%; }
+            #profile-grid-3 { top: 48.2%; left: 58.2%; }
+            #profile-grid-4 { top: 48.2%; left: 73.2%; }
+            #profile-grid-5 { top: 69.2%; left: 58.2%; }
+            #profile-grid-6 { top: 69.2%; left: 73.2%; }
         }
     
     </style>
@@ -488,26 +842,26 @@
 
 <!-- Popup โปรไฟล์ -->
 <div id="profilePopup" class="popup">
-    <div class="popup-content" style="position: relative; width: min(90vw, 1400px); max-width: 1400px;">
+    <div class="popup-content profile-popup-content" style="position: relative;">
         <span class="close-btn" onclick="closeProfile()">&times;</span>
-        <img src="image/profile_ui.png" alt="Profile UI" style="width: 100%; height: auto;">
+        <img src="image/profile_ui.png?v=20251126" alt="Profile UI" style="width: 100%; height: auto;">
         <!-- Profile Grid 1 (บนซ้าย) -->
-        <div id="profile-grid" style="position: absolute; top: 27%; left: 58%; width: 9%; height: 15%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
+        <div id="profile-grid" class="profile-grid-item" style="position: absolute; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
         </div>
         <!-- Profile Grid 2 (บนขวา) -->
-        <div id="profile-grid-2" style="position: absolute; top: 27%; left: 73%; width: 9%; height: 15%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
+        <div id="profile-grid-2" class="profile-grid-item" style="position: absolute; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
         </div>
         <!-- Profile Grid 3 (กลางซ้าย) -->
-        <div id="profile-grid-3" style="position: absolute; top: 48%; left: 58%; width: 9%; height: 15%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
+        <div id="profile-grid-3" class="profile-grid-item" style="position: absolute; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
         </div>
         <!-- Profile Grid 4 (กลางขวา) -->
-        <div id="profile-grid-4" style="position: absolute; top: 48%; left: 73%; width: 9%; height: 15%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
+        <div id="profile-grid-4" class="profile-grid-item" style="position: absolute; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
         </div>
         <!-- Profile Grid 5 (ล่างซ้าย) -->
-        <div id="profile-grid-5" style="position: absolute; top: 69%; left: 58%; width: 9%; height: 15%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
+        <div id="profile-grid-5" class="profile-grid-item" style="position: absolute; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
         </div>
         <!-- Profile Grid 6 (ล่างขวา) -->
-        <div id="profile-grid-6" style="position: absolute; top: 69%; left: 73%; width: 9%; height: 15%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
+        <div id="profile-grid-6" class="profile-grid-item" style="position: absolute; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
         </div>
     </div>
 </div>

@@ -124,8 +124,8 @@
         /* รูป1 styling */
         #image-1 {
             position: absolute;
-            left: 10%;        /* ระยะจากขวา */
-            top: 20%;          /* ตำแหน่งแนวตั้ง */
+            left: 10%;
+            top: 20%;
             transform: translateY(-50%);
             cursor: pointer;
             transition: all 0.3s ease;
@@ -136,15 +136,15 @@
         }
 
         #image-1 img {
-            width: 150px;      /* ความกว้าง */
+            width: clamp(80px, 10vw, 150px);
             height: auto;
         }
 
         /* รูป3 styling */
         #image-3 {
             position: absolute;
-            right: 30%;        /* ระยะจากขวา */
-            top: 30%;          /* ตำแหน่งแนวตั้ง */
+            right: 30%;
+            top: 30%;
             transform: translateY(-50%);
             cursor: pointer;
             transition: all 0.3s ease;
@@ -155,15 +155,15 @@
         }
 
         #image-3 img {
-            width: 150px;      /* ความกว้าง */
+            width: clamp(80px, 10vw, 150px);
             height: auto;
         }
 
         /* รูป2 styling */
         #image-2 {
             position: absolute;
-            right: 20%;        /* ระยะจากขวา */
-            top: 20%;          /* ตำแหน่งแนวตั้ง */
+            right: 20%;
+            top: 20%;
             transform: translateY(-50%);
             cursor: pointer;
             transition: all 0.3s ease;
@@ -174,8 +174,89 @@
         }
 
         #image-2 img {
-            width: 150px;      /* ความกว้าง */
+            width: clamp(80px, 10vw, 150px);
             height: auto;
+        }
+
+        /* Desktop Responsive */
+        /* Large Desktop (2560px and above) */
+        @media (min-width: 2560px) {
+            .back-button {
+                width: 90px;
+                height: 90px;
+                font-size: 36px;
+            }
+
+            .ore {
+                width: 180px;
+                height: 180px;
+            }
+
+            #image-1 img,
+            #image-2 img,
+            #image-3 img {
+                width: 200px;
+            }
+        }
+
+        /* Standard Desktop (1920px - 2559px) */
+        @media (min-width: 1920px) and (max-width: 2559px) {
+            .back-button {
+                width: 75px;
+                height: 75px;
+                font-size: 30px;
+            }
+
+            .ore {
+                width: 150px;
+                height: 150px;
+            }
+
+            #image-1 img,
+            #image-2 img,
+            #image-3 img {
+                width: 170px;
+            }
+        }
+
+        /* Desktop (1366px - 1919px) */
+        @media (min-width: 1366px) and (max-width: 1919px) {
+            .back-button {
+                width: 65px;
+                height: 65px;
+                font-size: 26px;
+            }
+
+            .ore {
+                width: 130px;
+                height: 130px;
+            }
+
+            #image-1 img,
+            #image-2 img,
+            #image-3 img {
+                width: 140px;
+            }
+        }
+
+        /* Small Desktop (1025px - 1365px) */
+        @media (min-width: 1025px) and (max-width: 1365px) {
+            .back-button {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+
+            .ore {
+                width: 110px;
+                height: 110px;
+            }
+
+            #image-1 img,
+            #image-2 img,
+            #image-3 img {
+                width: 120px;
+            }
         }
     </style>
 </head>
@@ -189,15 +270,15 @@
 
         <!-- Ores -->
         <div class="ore" id="ore-1" onclick="collectOreWithFruit(this, 'water')">
-            <img src="../image/clay minerals.png" alt="Clay Minerals">
+            <img src="../image/clay%20minerals.png" alt="Clay Minerals">
         </div>
 
         <div class="ore" id="ore-2" onclick="collectOreWithFruit(this, 'water')">
-            <img src="../image/clay minerals.png" alt="Clay Minerals">
+            <img src="../image/clay%20minerals.png" alt="Clay Minerals">
         </div>
 
         <div class="ore" id="ore-3" onclick="collectOreWithFruit(this, 'water')">
-            <img src="../image/clay minerals.png" alt="Clay Minerals">
+            <img src="../image/clay%20minerals.png" alt="Clay Minerals">
         </div>
 
         <!-- รูป1 -->
@@ -274,13 +355,28 @@
             });
         });
 
+        // ซ่อนแร่ที่เก็บไปแล้วเมื่อโหลดหน้า
+        window.addEventListener('DOMContentLoaded', () => {
+            const collectedOresKey = getUserCollectedOresKey();
+            const collectedOres = JSON.parse(localStorage.getItem(collectedOresKey)) || [];
+            
+            collectedOres.forEach(oreId => {
+                const oreElement = document.getElementById(oreId);
+                if (oreElement) {
+                    oreElement.style.display = 'none';
+                }
+            });
+        });
+
         // ฟังก์ชันรีเซ็ต (สำหรับการทดสอบ)
         // เรียกใช้ใน console: resetInventory()
         function resetInventory() {
             const inventoryKey = getUserInventoryKey();
             const collectedKey = getUserCollectedKey();
+            const collectedOresKey = getUserCollectedOresKey();
             localStorage.removeItem(inventoryKey);
             localStorage.removeItem(collectedKey);
+            localStorage.removeItem(collectedOresKey);
             alert('รีเซ็ต Inventory เรียบร้อย กรุณารีเฟรชหน้า');
             location.reload();
         }

@@ -103,6 +103,129 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
         }
+
+        /* Large Desktop (2560px and above) */
+        @media (min-width: 2560px) {
+            h1 {
+                font-size: 4em;
+                margin-bottom: 40px;
+            }
+
+            .back-button {
+                width: 90px;
+                height: 90px;
+                font-size: 36px;
+                top: 30px;
+                left: 30px;
+            }
+
+            .inventory-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 30px;
+                padding: 30px;
+            }
+
+            .inventory-item {
+                padding: 25px;
+            }
+
+            .inventory-item img {
+                height: 180px;
+            }
+
+            .inventory-item .item-name {
+                font-size: 1.5em;
+            }
+        }
+
+        /* Standard Desktop (1920px - 2559px) */
+        @media (min-width: 1920px) and (max-width: 2559px) {
+            h1 {
+                font-size: 3.5em;
+                margin-bottom: 35px;
+            }
+
+            .back-button {
+                width: 80px;
+                height: 80px;
+                font-size: 32px;
+                top: 28px;
+                left: 28px;
+            }
+
+            .inventory-grid {
+                grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+                gap: 25px;
+                padding: 28px;
+            }
+
+            .inventory-item {
+                padding: 22px;
+            }
+
+            .inventory-item img {
+                height: 160px;
+            }
+
+            .inventory-item .item-name {
+                font-size: 1.4em;
+            }
+        }
+
+        /* Desktop (1366px - 1919px) */
+        @media (min-width: 1366px) and (max-width: 1919px) {
+            h1 {
+                font-size: 3em;
+                margin-bottom: 32px;
+            }
+
+            .back-button {
+                width: 70px;
+                height: 70px;
+                font-size: 28px;
+                top: 25px;
+                left: 25px;
+            }
+
+            .inventory-grid {
+                grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+                gap: 22px;
+                padding: 25px;
+            }
+
+            .inventory-item {
+                padding: 18px;
+            }
+
+            .inventory-item img {
+                height: 140px;
+            }
+
+            .inventory-item .item-name {
+                font-size: 1.2em;
+            }
+        }
+
+        /* Small Desktop (1025px - 1365px) */
+        @media (min-width: 1025px) and (max-width: 1365px) {
+            h1 {
+                font-size: 2.8em;
+            }
+
+            .back-button {
+                width: 65px;
+                height: 65px;
+                font-size: 26px;
+            }
+
+            .inventory-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+
+            .inventory-item img {
+                height: 130px;
+            }
+        }
     </style>
 </head>
 <body>
