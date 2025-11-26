@@ -46,7 +46,7 @@ function handleLogin(event) {
     const password = document.getElementById('password').value;
     const remember = document.getElementById('remember').checked;
 
-    if (!username || !password) {ห
+    if (!username || !password) {
         
         alert('กรุณากรอก Username และ Password');
         return;
