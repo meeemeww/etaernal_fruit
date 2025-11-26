@@ -104,8 +104,8 @@
             }
 
             .popup-content {
-                width: clamp(500px, 35vw, 700px);
-                max-width: min(45vw, 700px);
+                width: clamp(550px, 38vw, 800px);
+                max-width: min(50vw, 800px);
             }
         }
 
@@ -120,24 +120,24 @@
             }
 
             .popup-content {
-                width: clamp(450px, 35vw, 600px);
-                max-width: min(45vw, 600px);
+                width: clamp(500px, 40vw, 700px);
+                max-width: min(52vw, 700px);
             }
         }
 
         /* Standard Desktop (1366px - 1919px) */
         @media (min-width: 1366px) and (max-width: 1919px) {
             .popup-content {
-                width: clamp(380px, 38vw, 520px);
-                max-width: min(48vw, 520px);
+                width: clamp(420px, 44vw, 600px);
+                max-width: min(54vw, 600px);
             }
         }
 
         /* Laptop (1025px - 1365px) */
         @media (min-width: 1025px) and (max-width: 1365px) {
             .popup-content {
-                width: clamp(340px, 42vw, 480px);
-                max-width: min(52vw, 480px);
+                width: clamp(360px, 48vw, 550px);
+                max-width: min(58vw, 550px);
             }
         }
 
@@ -161,8 +161,8 @@
             align-items: center;
             position: relative;
             background: transparent;
-            width: clamp(250px, 40vw, 550px);
-            max-width: min(50vw, 550px);
+            width: clamp(260px, 45vw, 650px);
+            max-width: min(55vw, 650px);
         }
 
 
@@ -180,8 +180,8 @@
             }
 
             .popup-content {
-                width: clamp(300px, 48vw, 420px);
-                max-width: 58vw;
+                width: clamp(320px, 52vw, 480px);
+                max-width: 62vw;
             }
         }
 
@@ -254,15 +254,15 @@
     <!-- Popups -->
     <div id="MarblePopup" class="popup">
         <div class="popup-content" style="position: relative;">
-            <img src="../image/mixing.png?v=20251126" alt="Marble" style="width: 100%; height: auto; object-fit: contain; display: block;">
+            <img src="../image/mixing.png?v=20251126999" alt="Marble" style="width: 100%; height: auto; object-fit: contain; display: block;">
             <!-- Fruit Selection Grid -->
-            <div id="fruit-grid" style="position: absolute; top: 22%; left: 14%; width: 14%; height: 22%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
+            <div id="fruit-grid" style="position: absolute; top: 20%; left: 12%; width: 18%; height: 26%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
             </div>
             <!-- Ore Selection Grid -->
-            <div id="ore-grid" style="position: absolute; top: 22%; left: 38%; width: 14%; height: 22%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
+            <div id="ore-grid" style="position: absolute; top: 20%; left: 36%; width: 18%; height: 26%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
             </div>
             <!-- Result Grid -->
-            <div id="result-grid" style="position: absolute; top: 24%; left: 63%; width: 12%; height: 18%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; background: #300F00; border: none;">
+            <div id="result-grid" style="position: absolute; top: 22%; left: 60%; width: 30%; height: 30%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; background: #300F00; border: none;">
             </div>
             <!-- Mix Button -->
             <button onclick="mixItems()" style="position: absolute; top: 55%; left: 50%; transform: translateX(-50%); width: 25%; height: 9%; background: transparent; border: none; font-size: 0px; cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation;"></button>
@@ -333,8 +333,8 @@
                 let imagePath = item.image.replace('../', '');
                 itemImg.src = '../' + imagePath;
                 itemImg.alt = item.name;
-                itemImg.style.width = '35px';
-                itemImg.style.height = '35px';
+                itemImg.style.width = '45px';
+                itemImg.style.height = '45px';
                 itemImg.style.objectFit = 'contain';
                 itemImg.style.filter = 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))';
                 
@@ -393,8 +393,8 @@
             let imagePath = item.image.replace('../', '');
             itemImg.src = '../' + imagePath;
             itemImg.alt = item.name;
-            itemImg.style.width = '45px';
-            itemImg.style.height = '45px';
+            itemImg.style.width = '70px';
+            itemImg.style.height = '70px';
             itemImg.style.objectFit = 'contain';
             itemImg.style.filter = 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))';
             
@@ -434,8 +434,8 @@
             let imagePath = item.image.replace('../', '');
             itemImg.src = '../' + imagePath;
             itemImg.alt = item.name;
-            itemImg.style.width = '45px';
-            itemImg.style.height = '45px';
+            itemImg.style.width = '110px';
+            itemImg.style.height = '110px';
             itemImg.style.objectFit = 'contain';
             itemImg.style.filter = 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))';
             
@@ -500,8 +500,8 @@
             const resultImg = document.createElement('img');
             resultImg.src = resultImage;
             resultImg.alt = resultName;
-            resultImg.style.width = '35px';
-            resultImg.style.height = '35px';
+            resultImg.style.width = '55px';
+            resultImg.style.height = '55px';
             resultImg.style.objectFit = 'contain';
             resultImg.style.filter = 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))';
             
