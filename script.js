@@ -562,6 +562,9 @@ function loadProfileMixedFruits() {
     const profileGrid = document.getElementById('profile-grid');
     const profileGrid2 = document.getElementById('profile-grid-2');
     const profileGrid3 = document.getElementById('profile-grid-3');
+    const profileGrid4 = document.getElementById('profile-grid-4');
+    const profileGrid5 = document.getElementById('profile-grid-5');
+    const profileGrid6 = document.getElementById('profile-grid-6');
     
     if (!profileGrid) {
         console.log('Profile grid not found');
@@ -572,10 +575,13 @@ function loadProfileMixedFruits() {
     profileGrid.innerHTML = '';
     if (profileGrid2) profileGrid2.innerHTML = '';
     if (profileGrid3) profileGrid3.innerHTML = '';
+    if (profileGrid4) profileGrid4.innerHTML = '';
+    if (profileGrid5) profileGrid5.innerHTML = '';
+    if (profileGrid6) profileGrid6.innerHTML = '';
     
-    // แสดงผลไม้ล่าสุด 3 ตัว
-    const grids = [profileGrid, profileGrid2, profileGrid3];
-    const latestFruits = mixedFruits.slice(-3).reverse(); // เอา 3 ตัวล่าสุด และกลับด้าน
+    // แสดงผลไม้ล่าสุด 6 ตัว
+    const grids = [profileGrid, profileGrid2, profileGrid3, profileGrid4, profileGrid5, profileGrid6];
+    const latestFruits = mixedFruits.slice(-6).reverse(); // เอา 6 ตัวล่าสุด และกลับด้าน
     
     latestFruits.forEach((fruit, index) => {
         if (grids[index]) {

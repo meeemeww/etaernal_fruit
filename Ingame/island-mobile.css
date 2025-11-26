@@ -1,4 +1,4 @@
-/* Mobile & Tablet Responsive CSS for All Islands */
+/* Responsive CSS for All Screen Sizes */
 
 /* Touch improvements for all interactive elements */
 .back-button,
@@ -14,6 +14,98 @@
 
 .ore img {
     pointer-events: none;
+}
+
+/* Large Desktop Monitors (27" and above - typically 2560px+) */
+@media (min-width: 2560px) {
+    .back-button {
+        width: 80px;
+        height: 80px;
+        font-size: 32px;
+        top: 30px;
+        left: 30px;
+    }
+
+    .ore {
+        width: 140px;
+        height: 140px;
+    }
+
+    /* Maintain proportional positioning */
+    #ore-1 {
+        bottom: 35%;
+        left: 15%;
+    }
+
+    #ore-2 {
+        bottom: 32%;
+        left: 42%;
+    }
+
+    #ore-3 {
+        bottom: 35%;
+        right: 18%;
+    }
+}
+
+/* Standard Desktop Monitors (24" - typically 1920px-2559px) */
+@media (min-width: 1920px) and (max-width: 2559px) {
+    .back-button {
+        width: 70px;
+        height: 70px;
+        font-size: 28px;
+        top: 25px;
+        left: 25px;
+    }
+
+    .ore {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* Maintain proportional positioning */
+    #ore-1 {
+        bottom: 33%;
+        left: 14%;
+    }
+
+    #ore-2 {
+        bottom: 30%;
+        left: 40%;
+    }
+
+    #ore-3 {
+        bottom: 33%;
+        right: 17%;
+    }
+}
+
+/* Desktop (15.6" Laptops and smaller desktops - 1366px-1919px) */
+@media (min-width: 1366px) and (max-width: 1919px) {
+    .back-button {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+
+    .ore {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Small Laptops (1025px-1365px) */
+@media (min-width: 1025px) and (max-width: 1365px) {
+    .back-button {
+        width: 55px;
+        height: 55px;
+        font-size: 22px;
+    }
+
+    .ore {
+        width: 90px;
+        height: 90px;
+    }
 }
 
 /* Tablet (iPad) */

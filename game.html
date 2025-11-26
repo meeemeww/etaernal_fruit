@@ -399,16 +399,16 @@
 
         .close-btn {
             position: absolute;
-            top: 95px;             
-            right: 320px;            
-            font-size: 28px;       
+            top: 7%;             
+            right: 23%;            
+            font-size: clamp(20px, 2vw, 32px);       
             font-weight: bold;
             color: transparent;      /* ตัวอักษรโปร่งใส (ไม่เห็น) */
             cursor: pointer;
             background: transparent; /* ปุ่มโปร่งใสทั้งหมด */
             border: none;
-            width: 50px;           
-            height: 50px;         
+            width: clamp(40px, 3.5vw, 60px);           
+            height: clamp(40px, 3.5vw, 60px);         
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -488,17 +488,26 @@
 
 <!-- Popup โปรไฟล์ -->
 <div id="profilePopup" class="popup">
-    <div class="popup-content" style="position: relative;">
+    <div class="popup-content" style="position: relative; width: min(90vw, 1400px); max-width: 1400px;">
         <span class="close-btn" onclick="closeProfile()">&times;</span>
-        <img src="image/profile_ui.png" alt="Profile UI">
-        <!-- Profile Grid 1 -->
-        <div id="profile-grid" style="position: absolute; top: 240px; left: 735px; width: 85px; height: 80px; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
+        <img src="image/profile_ui.png" alt="Profile UI" style="width: 100%; height: auto;">
+        <!-- Profile Grid 1 (บนซ้าย) -->
+        <div id="profile-grid" style="position: absolute; top: 18%; left: 52%; width: 6%; height: 11%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
         </div>
-        <!-- Profile Grid 2 -->
-        <div id="profile-grid-2" style="position: absolute; top: 240px; left: 880px; width: 85px; height: 80px; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
+        <!-- Profile Grid 2 (บนขวา) -->
+        <div id="profile-grid-2" style="position: absolute; top: 18%; left: 62.5%; width: 6%; height: 11%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
         </div>
-        <!-- Profile Grid 3 -->
-        <div id="profile-grid-3" style="position: absolute; top: 340px; left: 735px; width: 85px; height: 80px; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
+        <!-- Profile Grid 3 (กลางซ้าย) -->
+        <div id="profile-grid-3" style="position: absolute; top: 30%; left: 52%; width: 6%; height: 11%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
+        </div>
+        <!-- Profile Grid 4 (กลางขวา) -->
+        <div id="profile-grid-4" style="position: absolute; top: 30%; left: 62.5%; width: 6%; height: 11%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
+        </div>
+        <!-- Profile Grid 5 (ล่างซ้าย) -->
+        <div id="profile-grid-5" style="position: absolute; top: 42%; left: 52%; width: 6%; height: 11%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
+        </div>
+        <!-- Profile Grid 6 (ล่างขวา) -->
+        <div id="profile-grid-6" style="position: absolute; top: 42%; left: 62.5%; width: 6%; height: 11%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
         </div>
     </div>
 </div>

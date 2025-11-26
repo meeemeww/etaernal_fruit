@@ -7,6 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <title>Rainbow Island - Eternal Fruit</title>
+    <link rel="stylesheet" href="island-mobile.css">
     <style>
         * {
             margin: 0;
@@ -30,10 +31,10 @@
         /* Back button */
         .back-button {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 60px;
-            height: 60px;
+            top: clamp(10px, 2vh, 30px);
+            left: clamp(10px, 2vw, 30px);
+            width: clamp(45px, 4vw, 80px);
+            height: clamp(45px, 4vw, 80px);
             background: rgba(255, 255, 255, 0.9);
             border: 3px solid #FF1493;
             border-radius: 50%;
@@ -41,7 +42,7 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 24px;
+            font-size: clamp(18px, 1.5vw, 32px);
             color: #FF1493;
             font-weight: bold;
             transition: all 0.3s ease;
@@ -60,9 +61,8 @@
         /* Ore styling */
         .ore {
             position: absolute;
-            width: 100px;
-            height: 100px;
-            top: 70%;
+            width: clamp(60px, 7vw, 140px);
+            height: clamp(60px, 7vw, 140px);
             cursor: pointer;
             transition: all 0.3s ease;
             filter: drop-shadow(3px 3px 10px rgba(255, 105, 180, 0.8));

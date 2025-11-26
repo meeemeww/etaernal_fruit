@@ -31,10 +31,10 @@
         /* Back button */
         .back-button {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 60px;
-            height: 60px;
+            top: clamp(10px, 2vh, 30px);
+            left: clamp(10px, 2vw, 30px);
+            width: clamp(45px, 4vw, 80px);
+            height: clamp(45px, 4vw, 80px);
             background: rgba(255, 255, 255, 0.9);
             border: 3px solid #FFD700;
             border-radius: 50%;
@@ -42,7 +42,7 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 24px;
+            font-size: clamp(18px, 1.5vw, 32px);
             color: #000000;
             font-weight: bold;
             transition: all 0.3s ease;
@@ -58,8 +58,8 @@
         /* Ore styling */
         .ore {
             position: absolute;
-            width: 100px;
-            height: 100px;
+            width: clamp(60px, 7vw, 140px);
+            height: clamp(60px, 7vw, 140px);
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -177,20 +177,20 @@
 
         <!-- Light Ores (left side) -->
         <div class="ore light" id="ore-light-1" onclick="collectOreWithFruit(this, 'Light')">
-            <img src="../image/2d-gold-element.png" alt="Light Ore">
+            <img src="../image/2d_gold_element.png" alt="Light Ore">
         </div>
 
         <div class="ore light" id="ore-light-2" onclick="collectOreWithFruit(this, 'Light')">
-            <img src="../image/2d-gold-element.png" alt="Light Ore">
+            <img src="../image/2d_gold_element.png" alt="Light Ore">
         </div>
 
         <!-- Dark Ores (right side) -->
         <div class="ore dark" id="ore-dark-1" onclick="collectOreWithFruit(this, 'Dark')">
-            <img src="../image/2d-black-element.png" alt="Dark Ore">
+            <img src="../image/2d_black_element.png" alt="Dark Ore">
         </div>
 
         <div class="ore dark" id="ore-dark-2" onclick="collectOreWithFruit(this, 'Dark')">
-            <img src="../image/2d-black-element.png" alt="Dark Ore">
+            <img src="../image/2d_black_element.png" alt="Dark Ore">
         </div>
     </div>
 
