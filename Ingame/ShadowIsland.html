@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Shadow Island - Eternal Fruit</title>
+    <link rel="stylesheet" href="island-mobile.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        #island-container {
+            width: 100vw;
+            height: 100vh;
+            background: url('../image/Shadow_Background.PNG') center/cover no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Back button */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 3px solid #4B0082;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            color: #4B0082;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-button:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        /* Ore styling */
+        .ore {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            filter: drop-shadow(3px 3px 6px rgba(138, 43, 226, 0.6));
+        }
+
+        .ore:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(5px 5px 10px rgba(138, 43, 226, 0.9));
+        }
+
+        .ore img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Ore positions based on the image */
+        #ore-1 {
+            bottom: 28%;
+            left: 12%;
+        }
+
+        #ore-2 {
+            bottom: 20%;
+            left: 35%;
+        
+        }
+
+        #ore-3 {
+            top: 32%;
+            right: 25%;
+            top: 70%;
+        }
+
+        /* Floating animation */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .ore {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        #ore-2 {
+            animation-delay: 0.5s;
+        }
+
+        #ore-3 {
+            animation-delay: 1s;
+        }
+        .collected {
+            animation: collect 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="island-container">
+        <!-- Back button -->
+        <div class="back-button" onclick="goBack()">
+            ←
+        </div>
+
+        <!-- Ores -->
+        <div class="ore" id="ore-1" onclick="collectOreWithFruit(this, 'Shadow')">
+            <img src="c:\Users\User\Downloads\eternal fruit4\eternal fruit\image\Mysterious Element.png" alt="Shadow Ore">
+        </div>
+
+        <div class="ore" id="ore-2" onclick="collectOreWithFruit(this, 'Shadow')">
+            <img src="c:\Users\User\Downloads\eternal fruit4\eternal fruit\image\Mysterious Element.png" alt="Shadow Ore">
+        </div>
+
+        <div class="ore" id="ore-3" onclick="collectOreWithFruit(this, 'Shadow')">
+            <img src="c:\Users\User\Downloads\eternal fruit4\eternal fruit\image\Mysterious Element.png" alt="Shadow Ore">
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        function goBack() {
+            window.location.href = '../game.html';
+        }
+    </script>
+</body>
+
+</html>

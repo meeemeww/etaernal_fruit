@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Login - Eternal Fruit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .game-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            /* รูปพื้นหลัง */
+            background-image: url('image/background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* โลโก้แทนชื่อเกม */
+        .game-logo {
+            position: absolute;
+            top: -7vh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 45vmin;
+            height: 45vmin;
+            object-fit: contain;
+            z-index: 10;
+            filter: drop-shadow(3px 3px 8px rgba(0, 0, 0, 0.4));
+        }
+
+        /* กล่อง Login */
+        .login-box {
+            background: rgba(220, 220, 220, 0.95);
+            border: 0.5vmin solid rgba(100, 100, 100, 0.5);
+            border-radius: 2vmin;
+            padding: 5vmin 6vmin;
+            width: 55vmin;
+            box-shadow: 0 1vmin 4vmin rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            margin-top: 10vh;
+        }
+
+        /* หัวข้อ Login */
+        .login-header {
+            background: linear-gradient(to bottom, #49c5ef, #5b6fd4);
+            color: rgb(0, 0, 0);
+            font-size: 2.5vmin;
+            font-weight: bold;
+            text-align: center;
+            padding: 1.5vmin 3vmin;
+            border: 0.4vmin solid #4475cf;
+            border-radius: 3vmin;
+            margin-bottom: 3vmin;
+            box-shadow: 0 0.5vmin 1.5vmin rgba(0, 0, 0, 0.2);
+            position: relative;
+            top: -7vmin;
+            margin-bottom: -4vmin;
+        }
+
+        /* Input Fields */
+        .input-group {
+            margin-bottom: 2vmin;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 1.5vmin 2vmin;
+            font-size: 1.8vmin;
+            border: 0.3vmin solid #8B4513;
+            border-radius: 1vmin;
+            background: linear-gradient(to right, #FFB347, #87CEEB);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .input-field::placeholder {
+            color: rgba(0, 0, 0, 0.6);
+            font-weight: 500;
+        }
+
+        .input-field:focus {
+            border-color: #4169E1;
+            box-shadow: 0 0 1vmin rgba(65, 105, 225, 0.5);
+        }
+
+        /* Remember Me & Forgot Password */
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5vmin;
+            font-size: 1.4vmin;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.8vmin;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 1.8vmin;
+            height: 1.8vmin;
+            cursor: pointer;
+        }
+
+        .forgot-link {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-link:hover {
+            color: #4169E1;
+            text-decoration: underline;
+        }
+
+        /* ปุ่ม Log-in */
+        .login-button {
+            width: 100%;
+            padding: 1.5vmin;
+            font-size: 2vmin;
+            font-weight: 400;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #49c5ef, #5b6fd4);
+            color: rgb(0, 0, 0);
+            border: 0.4vmin solid #2E5090;
+            border-radius: 1.5vmin;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0.6vmin 0 #2E5090, 0 0.8vmin 1.5vmin rgba(0, 0, 0, 0.3);
+            margin-bottom: 1.5vmin;
+        }
+
+        .login-button:hover {
+            background: linear-gradient(to right, #49c5ef, #5b6fd4);
+            box-shadow: 0 0.8vmin 0 #2E5090, 0 1vmin 2vmin rgba(0, 0, 0, 0.4);
+        }
+
+        .login-button:active {
+            background: linear-gradient(to right, #49c5ef, #5b6fd4);
+            box-shadow: 0 0.3vmin 0 #2E5090, 0 0.5vmin 1vmin rgba(0, 0, 0, 0.3);
+        }
+
+        /* ปุ่ม Register */
+        .register-button {
+            width: 100%;
+            padding: 1.5vmin;
+            font-size: 2vmin;
+            font-weight: 400;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #49c5ef, #5b6fd4);
+            color: rgb(0, 0, 0);
+            border: 0.4vmin solid #2E5090;
+            border-radius: 1.5vmin;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0.6vmin 0 #2E5090, 0 0.8vmin 1.5vmin rgba(0, 0, 0, 0.3);
+        }
+
+        .register-button:hover {
+            background: linear-gradient(to right, #49c5ef, #5b6fd4);
+            box-shadow: 0 0.8vmin 0 #2E5090, 0 1vmin 2vmin rgba(0, 0, 0, 0.4);
+        }
+
+        .register-button:active {
+            background: linear-gradient(to right, #49c5ef, #5b6fd4);
+            box-shadow: 0 0.3vmin 0 #2E5090, 0 0.5vmin 1vmin rgba(0, 0, 0, 0.3);
+        }
+
+        /* Mobile touch improvements */
+        button,
+        input,
+        a {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        /* Mobile & Tablet Responsive */
+        @media (max-width: 768px) {
+            .game-logo {
+                width: 35vmin;
+                height: 35vmin;
+                top: -5vh;
+            }
+
+            .login-box {
+                width: 70vmin;
+                padding: 4vmin 5vmin;
+                margin-top: 8vh;
+            }
+
+            .login-header {
+                font-size: 2.2vmin;
+                top: -6vmin;
+            }
+
+            .input-field {
+                font-size: 2vmin;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .game-logo {
+                width: 40vmin;
+                height: 40vmin;
+                top: -4vh;
+            }
+
+            .login-box {
+                width: 85vmin;
+                padding: 4vmin 4.5vmin;
+                margin-top: 6vh;
+            }
+
+            .login-header {
+                font-size: 2.8vmin;
+            }
+
+            .input-field {
+                font-size: 2.2vmin;
+                padding: 1.8vmin 2vmin;
+            }
+
+            .options {
+                font-size: 1.6vmin;
+            }
+
+            .login-button,
+            .register-button {
+                font-size: 2.2vmin;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="game-container">
+        <!-- โลโก้ -->
+        <img src="image/logo.png" alt="Eternal Fruit Logo" class="game-logo">
+
+        <!-- กล่อง Login -->
+        <div class="login-box">
+            <!-- หัวข้อ Login -->
+            <div class="login-header">Login</div>
+
+            <!-- Form -->
+            <form onsubmit="handleLogin(event)">
+                <!-- Username -->
+                <div class="input-group">
+                    <input type="text" class="input-field" id="username" placeholder="username" required>
+                </div>
+
+                <!-- Password -->
+                <div class="input-group">
+                    <input type="password" class="input-field" id="password" placeholder="password" required>
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="options">
+                    <label class="checkbox-group">
+                        <input type="checkbox" id="remember">
+                        <span>rememberme</span>
+                    </label>
+                    <a href="#" class="forgot-link" onclick="forgotPassword()">Change password</a>
+                </div>
+
+                <!-- ปุ่ม Log-in -->
+                <button type="submit" class="login-button">Login</button>
+
+                <!-- ปุ่ม Register -->
+                <button type="button" class="register-button" onclick="goToRegister()">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

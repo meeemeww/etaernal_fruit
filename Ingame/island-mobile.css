@@ -1,0 +1,123 @@
+/* Mobile & Tablet Responsive CSS for All Islands */
+
+/* Touch improvements for all interactive elements */
+.back-button,
+.ore {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.back-button:active,
+.ore:active {
+    transform: scale(1.1);
+}
+
+.ore img {
+    pointer-events: none;
+}
+
+/* Tablet (iPad) */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .back-button {
+        width: 55px;
+        height: 55px;
+        font-size: 22px;
+    }
+
+    .ore {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+/* Mobile - Tablet (Portrait) */
+@media (max-width: 768px) {
+    .back-button {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        top: 15px;
+        left: 15px;
+    }
+
+    .ore {
+        width: 70px;
+        height: 70px;
+    }
+
+    /* Adjust ore positions for smaller screens */
+    #ore-1 {
+        bottom: 28%;
+        left: 10%;
+    }
+
+    #ore-2 {
+        bottom: 25%;
+        left: 35%;
+    }
+
+    #ore-3 {
+        bottom: 28%;
+        right: 12%;
+    }
+}
+
+/* Mobile (Small screens) */
+@media (max-width: 480px) {
+    .back-button {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+        top: 10px;
+        left: 10px;
+    }
+
+    .ore {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* Further adjust ore positions for very small screens */
+    #ore-1 {
+        bottom: 25%;
+        left: 8%;
+    }
+
+    #ore-2 {
+        bottom: 22%;
+        left: 37%;
+    }
+
+    #ore-3 {
+        bottom: 25%;
+        right: 10%;
+    }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+    .back-button {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        top: 8px;
+        left: 8px;
+    }
+
+    .ore {
+        width: 55px;
+        height: 55px;
+    }
+
+    #ore-1 {
+        bottom: 20%;
+    }
+
+    #ore-2 {
+        bottom: 18%;
+    }
+
+    #ore-3 {
+        bottom: 20%;
+    }
+}

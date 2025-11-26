@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Eternal Fruit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .game-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+
+            /* รูปพื้นหลัง */
+            background-image: url('image/background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* โลโก้ */
+        .logo {
+            position: absolute;
+            top: -140px;
+            left: 30px;
+            width: 600px !important;
+            height: 600px !important;
+            max-width: none !important;
+            max-height: none !important;
+            object-fit: contain;
+            z-index: 10;
+            filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.4));
+        }
+
+        /* ปุ่ม START */
+        .start-button {
+            position: absolute;
+            top: 300px;
+            left: 220px;
+            padding: 15px 50px;
+            font-size: 30px;
+            font-weight: bold;
+            background: linear-gradient(to bottom, #FFFCCE 0%, #FFB330 100%);
+            border: 5px solid #8B4513;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 0 #654321, 0 12px 20px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        .start-button:hover {
+            background: linear-gradient(to bottom, #FFE4B5 0%, #F5DEB3 100%);
+            box-shadow: 0 10px 0 #654321, 0 15px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        .start-button:active {
+            background: linear-gradient(to bottom, #F5DEB3 0%, #DEB887 100%);
+            box-shadow: 0 8px 0 #654321, 0 12px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Mobile touch improvements */
+        .start-button {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                width: 400px !important;
+                height: 400px !important;
+                top: -100px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .start-button {
+                top: 220px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 24px;
+                padding: 12px 45px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                width: 300px !important;
+                height: 300px !important;
+                top: -60px;
+            }
+
+            .start-button {
+                top: 180px;
+                font-size: 20px;
+                padding: 10px 35px;
+            }
+        }
+
+        /* iPad & Tablet */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .logo {
+                width: 500px !important;
+                height: 500px !important;
+                top: -120px;
+            }
+
+            .start-button {
+                top: 260px;
+                font-size: 32px;
+                padding: 15px 55px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="game-container">
+        <!-- โลโก้มุมซ้ายบน -->
+        <img src="image/logo.png" alt="Logo" class="logo">
+
+        <!-- ปุ่ม START -->
+        <button class="start-button" onclick="startGame()">START</button>
+    </div>
+
+    <script>
+        function startGame() {
+            // ไปหน้า Login
+            window.location.href = 'login.html';
+        }
+
+        // เพิ่ม keyboard shortcut
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                startGame();
+            }
+        });
+    </script>
+</body>
+
+</html>

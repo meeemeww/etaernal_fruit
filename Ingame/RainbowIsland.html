@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Rainbow Island - Eternal Fruit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        #island-container {
+            width: 100vw;
+            height: 100vh;
+            background: url('../image/Rainbow_Background.PNG') center/cover no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Back button */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 3px solid #FF1493;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            color: #FF1493;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .back-button:hover,
+        .back-button:active {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        /* Ore styling */
+        .ore {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 70%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            filter: drop-shadow(3px 3px 10px rgba(255, 105, 180, 0.8));
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .ore:hover,
+        .ore:active {
+            transform: scale(1.2);
+            filter: drop-shadow(5px 5px 15px rgba(255, 105, 180, 1));
+        }
+
+        .ore img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            pointer-events: none;
+        }
+
+        /* Ore positions based on the image */
+        #ore-1 {
+            bottom: 35%;
+            left: 10%;
+        }
+
+        #ore-2 {
+            bottom: 32%;
+            left: 30%;
+        }
+
+        #ore-3 {
+            bottom: 35%;
+            right: 15%;
+        }
+
+        /* Rainbow floating animation */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @keyframes rainbow-glow {
+            0% {
+                filter: drop-shadow(3px 3px 10px rgba(255, 0, 0, 0.8));
+            }
+
+            25% {
+                filter: drop-shadow(3px 3px 10px rgba(255, 255, 0, 0.8));
+            }
+
+            50% {
+                filter: drop-shadow(3px 3px 10px rgba(0, 255, 0, 0.8));
+            }
+
+            75% {
+                filter: drop-shadow(3px 3px 10px rgba(0, 0, 255, 0.8));
+            }
+
+            100% {
+                filter: drop-shadow(3px 3px 10px rgba(255, 0, 255, 0.8));
+            }
+        }
+
+        .ore {
+            animation: float 3s ease-in-out infinite, rainbow-glow 3s linear infinite;
+        }
+
+        #ore-2 {
+            animation-delay: 0.5s;
+        }
+
+        #ore-3 {
+            animation-delay: 1s;
+        }
+
+
+        .collected {
+            animation: collect 0.5s ease-out forwards;
+        }
+
+        /* Mobile & Tablet Responsive */
+        @media (max-width: 768px) {
+            .back-button {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+                top: 15px;
+                left: 15px;
+            }
+
+            .ore {
+                width: 70px;
+                height: 70px;
+            }
+
+            #ore-1 {
+                bottom: 30%;
+                left: 8%;
+            }
+
+            #ore-2 {
+                bottom: 28%;
+                left: 35%;
+            }
+
+            #ore-3 {
+                bottom: 30%;
+                right: 12%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .back-button {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+                top: 10px;
+                left: 10px;
+            }
+
+            .ore {
+                width: 60px;
+                height: 60px;
+            }
+
+            #ore-1 {
+                bottom: 28%;
+                left: 5%;
+            }
+
+            #ore-2 {
+                bottom: 25%;
+                left: 37%;
+            }
+
+            #ore-3 {
+                bottom: 28%;
+                right: 8%;
+            }
+        }
+
+        /* iPad & Tablet */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .ore {
+                width: 90px;
+                height: 90px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="island-container">
+        <!-- Back button -->
+        <div class="back-button" onclick="goBack()">
+            ←
+        </div>
+
+        <!-- Ores -->
+        <div class="ore" id="ore-1" onclick="collectOreWithFruit(this, 'Rainbow')">
+            <img src="c:\Users\User\Downloads\eternal fruit4\eternal fruit\image\Rainbow Element.png" alt="Rainbow Ore">
+        </div>
+
+        <div class="ore" id="ore-2" onclick="collectOreWithFruit(this, 'Rainbow')">
+            <img src="c:\Users\User\Downloads\eternal fruit4\eternal fruit\image\Rainbow Element.png" alt="Rainbow Ore">
+        </div>
+
+        <div class="ore" id="ore-3" onclick="collectOreWithFruit(this, 'Rainbow')">
+            <img src="c:\Users\User\Downloads\eternal fruit4\eternal fruit\image\Rainbow Element.png" alt="Rainbow Ore">
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        function goBack() {
+            window.location.href = '../game.html';
+        }
+    </script>
+</body>
+
+</html>

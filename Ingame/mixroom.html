@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mix Room - Eternal Fruit</title>
+
+    <style>
+        /* Reset & Body */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Mixroom Background */
+        #mixroom-container {
+            width: 100vw;
+            height: 100vh;
+            background: url('../image/Purple_Background.png') center/cover no-repeat;
+            position: relative;
+        }
+
+        /* Back Button */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 3px solid #79138b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            color: #79138b;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+
+        .back-button:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        /* Icons */
+        #Marble_icon,
+        #Book_icon
+         {
+            position: fixed;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        #Marble_icon { bottom: 20px; left: 350px; width: 160px; }
+        #Book_icon { top: 450px; right: 500px; width: 200px; }
+
+        /* Popup styling (เหมือน Profile) */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            pointer-events: auto;
+        }
+
+        .popup-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Close Button */
+        .close-btn {
+            position: absolute;
+            top: 30px;
+            right: 350px;
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: bold;
+            color: transparent;
+            z-index: 1001;
+            transition: none;
+        }
+
+        .close-btn:hover {
+            background: transparent;
+            transform: none;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <div id="mixroom-container">
+        <div class="back-button" onclick="goBack()">←</div>
+    </div>
+
+    <!-- Icons -->
+    <img id="Marble_icon" src="../image/Marble_icon.png" alt="Marble" onclick="openPopup('MarblePopup')">
+    <img id="Book_icon" src="../image/Book_icon.png" alt="Book" onclick="openPopup('BookPopup')">
+
+    <!-- Popups -->
+    <div id="MarblePopup" class="popup">
+        <div class="popup-content" style="width: 1600px; max-width: 95vw; position: relative;">
+            <img src="../image/mixing.png" alt="Marble" style="width: 100%; height: auto; max-height: 900px; object-fit: contain;">
+            <!-- Fruit Selection Grid -->
+            <div id="fruit-grid" style="position: absolute; top: 270px; left: 500px; width: 130px; height: 130px; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
+            </div>
+            <!-- Ore Selection Grid -->
+            <div id="ore-grid" style="position: absolute; top: 270px; left: 670px; width: 130px; height: 130px; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
+            </div>
+            <!-- Result Grid (Brown) -->
+            <div id="result-grid" style="position: absolute; top: 280px; left: 845px; width: 100px; height: 110px; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; background: #300F00
+            ; border: none;">
+            </div>
+            <!-- Mix Button -->
+            <button onclick="mixItems()" style="position: absolute; top: 490px; left: 50%; transform: translateX(-50%); width: 180px; height: 50px; background: transparent; border: none; font-size: 0px; cursor: pointer;"></button>
+            <!-- Inventory Grid -->
+            <div id="mixing-inventory" style="position: absolute; bottom: 170px; left: 50%; transform: translateX(-50%); width: 490px; height: 128px; display: grid; grid-template-columns: repeat(7, 70px); grid-template-rows: repeat(2, 64px); row-gap: 0px; column-gap: 0px; padding: 0px; overflow: visible;">
+            </div>
+            <!-- Close Button Area -->
+            <div onclick="closePopup('MarblePopup')" style="position: absolute; top: 200px; right: 480px; width: 40px; height: 40px; cursor: pointer; z-index: 99999; background: transparent; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0px; color: white; font-weight: bold;">×</div>
+        </div>
+    </div>
+
+    <div id="BookPopup" class="popup">
+        <div class="popup-content" style="width: 90vw; max-width: 1400px;">
+            <img src="../image/Eternal_book.png" alt="Book" style="width: 100%; height: auto; max-height: 95vh; object-fit: contain;">
+            <button class="close-btn" onclick="closePopup('BookPopup')">&times;</button>
+        </div>
+    </div>
+
+
+    <script src="../script.js"></script>
+    <script>
+        // Back button
+        function goBack() { window.location.href = '../game.html'; }
+
+        // เปิด/ปิด popup ด้วย id
+        function openPopup(id) { 
+            document.getElementById(id).style.display = 'flex';
+            if (id === 'MarblePopup') {
+                loadMixingInventory();
+            }
+        }
+        function closePopup(id) { document.getElementById(id).style.display = 'none'; }
+
+        // โหลด inventory ลงใน mixing popup
+        function loadMixingInventory() {
+            const inventoryKey = getUserInventoryKey();
+            let inventory = JSON.parse(localStorage.getItem(inventoryKey)) || [];
+            const uniqueInventory = [];
+            const seenIds = new Set();
+            
+            inventory.forEach(item => {
+                const itemId = item.id || item.name;
+                if (!seenIds.has(itemId)) {
+                    seenIds.add(itemId);
+                    uniqueInventory.push(item);
+                }
+            });
+
+            const container = document.getElementById('mixing-inventory');
+            container.innerHTML = '';
+
+            uniqueInventory.forEach((item) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.style.position = 'relative';
+                itemDiv.style.textAlign = 'center';
+                itemDiv.style.background = 'transparent';
+                itemDiv.style.borderRadius = '10px';
+                itemDiv.style.padding = '0px';
+                itemDiv.style.border = '0px';
+                itemDiv.style.outline = 'none';
+                itemDiv.style.transition = 'all 0.3s';
+                itemDiv.style.cursor = 'pointer';
+                itemDiv.style.display = 'flex';
+                itemDiv.style.alignItems = 'center';
+                itemDiv.style.justifyContent = 'center';
+                
+                const itemImg = document.createElement('img');
+                let imagePath = item.image.replace('../', '');
+                itemImg.src = '../' + imagePath;
+                itemImg.alt = item.name;
+                itemImg.style.width = '50px';
+                itemImg.style.height = '50px';
+                itemImg.style.objectFit = 'contain';
+                itemImg.style.filter = 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))';
+                
+                // เพิ่ม click handler สำหรับผลไม้
+                if (item.name === 'รูป1' || item.name === 'รูป2' || item.name === 'รูป3') {
+                    itemDiv.onclick = () => {
+                        addToFruitGrid(item);
+                    };
+                }
+                // เพิ่ม click handler สำหรับแร่
+                else if (item.name === 'copper' || item.name === 'silver' || item.name === 'gold' || 
+                         item.name === 'soil' || item.name === 'water' || item.name === 'fire' || item.name === 'air') {
+                    itemDiv.onclick = () => {
+                        addToOreGrid(item);
+                    };
+                }
+                
+                itemDiv.onmouseover = () => {
+                    itemDiv.style.background = 'rgba(255, 215, 0, 0.2)';
+                    itemDiv.style.transform = 'scale(1.1)';
+                };
+                itemDiv.onmouseout = () => {
+                    itemDiv.style.background = 'transparent';
+                    itemDiv.style.transform = 'scale(1)';
+                };
+                
+                itemDiv.appendChild(itemImg);
+                container.appendChild(itemDiv);
+            });
+        }
+
+        // เพิ่มผลไม้ลงกรอบบน
+        function addToFruitGrid(item) {
+            const fruitGrid = document.getElementById('fruit-grid');
+            
+            // เช็คว่ามีผลไม้อยู่แล้วหรือไม่ (ห้ามเอาเข้าซ้ำ)
+            if (fruitGrid.children.length >= 1) {
+                alert('ใส่ได้แค่ผลไม้อันเดียวเท่านั้น!');
+                return;
+            }
+            
+            const itemDiv = document.createElement('div');
+            itemDiv.style.position = 'relative';
+            itemDiv.style.textAlign = 'center';
+            itemDiv.style.background = 'transparent';
+            itemDiv.style.borderRadius = '10px';
+            itemDiv.style.padding = '0px';
+            itemDiv.style.border = '0px';
+            itemDiv.style.outline = 'none';
+            itemDiv.style.cursor = 'pointer';
+            itemDiv.style.display = 'flex';
+            itemDiv.style.alignItems = 'center';
+            itemDiv.style.justifyContent = 'center';
+            
+            const itemImg = document.createElement('img');
+            let imagePath = item.image.replace('../', '');
+            itemImg.src = '../' + imagePath;
+            itemImg.alt = item.name;
+            itemImg.style.width = '110px';
+            itemImg.style.height = '110px';
+            itemImg.style.objectFit = 'contain';
+            itemImg.style.filter = 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))';
+            
+            // คลิกเพื่อลบออกจากกรอบบน
+            itemDiv.onclick = () => {
+                fruitGrid.removeChild(itemDiv);
+            };
+            
+            itemDiv.appendChild(itemImg);
+            fruitGrid.appendChild(itemDiv);
+        }
+
+        // เพิ่มแร่ลงกรอบม่วง
+        function addToOreGrid(item) {
+            const oreGrid = document.getElementById('ore-grid');
+            
+            // เช็คว่ามีแร่อยู่แล้วหรือไม่ (ห้ามเอาเข้าซ้ำ)
+            if (oreGrid.children.length >= 1) {
+                alert('ใส่ได้แค่แร่อันเดียวเท่านั้น!');
+                return;
+            }
+            
+            const itemDiv = document.createElement('div');
+            itemDiv.style.position = 'relative';
+            itemDiv.style.textAlign = 'center';
+            itemDiv.style.background = 'transparent';
+            itemDiv.style.borderRadius = '10px';
+            itemDiv.style.padding = '0px';
+            itemDiv.style.border = '0px';
+            itemDiv.style.outline = 'none';
+            itemDiv.style.cursor = 'pointer';
+            itemDiv.style.display = 'flex';
+            itemDiv.style.alignItems = 'center';
+            itemDiv.style.justifyContent = 'center';
+            
+            const itemImg = document.createElement('img');
+            let imagePath = item.image.replace('../', '');
+            itemImg.src = '../' + imagePath;
+            itemImg.alt = item.name;
+            itemImg.style.width = '110px';
+            itemImg.style.height = '110px';
+            itemImg.style.objectFit = 'contain';
+            itemImg.style.filter = 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))';
+            
+            // คลิกเพื่อลบออกจากกรอบ
+            itemDiv.onclick = () => {
+                oreGrid.removeChild(itemDiv);
+            };
+            
+            itemDiv.appendChild(itemImg);
+            oreGrid.appendChild(itemDiv);
+        }
+
+        // ฟังก์ชัน Mix
+        function mixItems() {
+            const fruitGrid = document.getElementById('fruit-grid');
+            const oreGrid = document.getElementById('ore-grid');
+            const resultGrid = document.getElementById('result-grid');
+            
+            // เช็คว่ามีผลไม้และแร่ในกรอบหรือไม่
+            if (fruitGrid.children.length === 0) {
+                alert('กรุณาใส่ผลไม้ก่อน!');
+                return;
+            }
+            if (oreGrid.children.length === 0) {
+                alert('กรุณาใส่แร่ก่อน!');
+                return;
+            }
+            
+            // ดึงชื่อผลไม้และแร่
+            const fruitImg = fruitGrid.querySelector('img');
+            const oreImg = oreGrid.querySelector('img');
+            const fruitName = fruitImg ? fruitImg.alt : '';
+            const oreName = oreImg ? oreImg.alt : '';
+            
+            // ล้างกรอบผลลัพธ์
+            resultGrid.innerHTML = '';
+            
+            // ตรวจสอบสูตร
+            let resultImage = '';
+            let resultName = '';
+            
+            if (fruitName === 'รูป2' && oreName === 'water') {
+                resultImage = '../image/11.png';
+                resultName = 'ผลไม้ 11';
+            } else if (fruitName === 'รูป1' && oreName === 'water') {
+                resultImage = '../image/12.png';
+                resultName = 'ผลไม้ 12';
+            } else if (fruitName === 'รูป3' && oreName === 'water') {
+                resultImage = '../image/13.png';
+                resultName = 'ผลไม้ 13';
+            } else {
+                alert('สูตรผิด! ไม่สามารถผสมได้');
+                return;
+            }
+            
+            // สร้างผลลัพธ์
+            const resultDiv = document.createElement('div');
+            resultDiv.style.display = 'flex';
+            resultDiv.style.alignItems = 'center';
+            resultDiv.style.justifyContent = 'center';
+            
+            const resultImg = document.createElement('img');
+            resultImg.src = resultImage;
+            resultImg.alt = resultName;
+            resultImg.style.width = '80px';
+            resultImg.style.height = '80px';
+            resultImg.style.objectFit = 'contain';
+            resultImg.style.filter = 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))';
+            
+            resultDiv.appendChild(resultImg);
+            resultGrid.appendChild(resultDiv);
+            
+            // บันทึกผลไม้ที่ mix ได้ลง localStorage
+            const username = getCurrentUsername();
+            if (username) {
+                const mixedFruitsKey = 'mixedFruits_' + username;
+                let mixedFruits = JSON.parse(localStorage.getItem(mixedFruitsKey)) || [];
+                
+                // เพิ่มผลไม้ที่ mix ได้
+                mixedFruits.push({
+                    name: resultName,
+                    image: resultImage,
+                    id: Date.now()
+                });
+                
+                localStorage.setItem(mixedFruitsKey, JSON.stringify(mixedFruits));
+            }
+            
+            // แสดงข้อความสำเร็จ
+            setTimeout(() => {
+                alert('ผสมสำเร็จ!');
+            }, 500);
+        }
+
+        // คลิกพื้นหลังปิด popup
+        window.addEventListener('click', function(e) {
+            ['MarblePopup','BookPopup'].forEach(id => {
+                const popup = document.getElementById(id);
+                if (e.target === popup) popup.style.display = 'none';
+            });
+        });
+
+        
+    </script>
+</body>
+</html>

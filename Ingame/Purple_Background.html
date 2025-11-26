@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purple Background</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: purple;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+
+        #bg-image {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 70px;
+            height: 70px;
+            background-color: white !important;
+            border: 4px solid cyan !important;
+            border-radius: 50% !important;
+            cursor: pointer;
+            font-size: 40px;
+            color: cyan;
+            font-weight: bold;
+            z-index: 9999 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            box-shadow: 0 0 10px rgba(0, 206, 209, 0.8) !important;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none !important;
+        }
+
+        .back-button:hover {
+            background-color: #f0f0f0 !important;
+            transform: scale(1.15);
+            box-shadow: 0 0 20px rgba(0, 206, 209, 1) !important;
+        }
+
+        .back-button:active {
+            transform: scale(0.95);
+        }
+
+        .back-button:focus {
+            outline: none !important;
+        }
+    </style>
+</head>
+<body>
+    <img id="bg-image" src="../image/Purple_Background.png" alt="Purple Background">
+    <button class="back-button" onclick="goBack()">←</button>
+
+    <script>
+        function goBack() {
+            window.location.href = '../game.html';
+        }
+    </script>
+</body>
+</html>

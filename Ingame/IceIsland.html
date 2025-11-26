@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Ice Island - Eternal Fruit</title>
+    <link rel="stylesheet" href="island-mobile.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        #island-container {
+            width: 100vw;
+            height: 100vh;
+            background: url('../image/Ice_Background.PNG') center/cover no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Back button */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 3px solid #00CED1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            color: #00CED1;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-button:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        /* Ore styling */
+        .ore {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            filter: drop-shadow(3px 3px 10px rgba(0, 206, 209, 0.8));
+        }
+
+        .ore:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(5px 5px 15px rgba(135, 206, 250, 1));
+        }
+
+        .ore img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Ore positions based on the image */
+        #ore-1 {
+            bottom: 30%;
+            left: 12%;
+        }
+
+        #ore-2 {
+            bottom: 25%;
+            left: 40%;
+        }
+
+        #ore-3 {
+            bottom: 28%;
+            right: 18%;
+        }
+
+        /* Ice floating animation */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes ice-sparkle {
+
+            0%,
+            100% {
+                filter: drop-shadow(3px 3px 10px rgba(0, 206, 209, 0.8));
+            }
+
+            50% {
+                filter: drop-shadow(5px 5px 20px rgba(173, 216, 230, 1));
+            }
+        }
+
+        .ore {
+            animation: float 3s ease-in-out infinite, ice-sparkle 2s ease-in-out infinite;
+        }
+
+        #ore-2 {
+            animation-delay: 0.5s;
+        }
+
+        #ore-3 {
+            animation-delay: 1s;
+        }
+
+        .collected {
+            animation: collect 0.5s ease-out forwards;
+        }
+
+        /* Snowflakes decoration */
+        @keyframes snow-fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10vh;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 20px;
+            animation: snow-fall linear infinite;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="island-container">
+        <!-- Back button -->
+        <div class="back-button" onclick="goBack()">
+            ←
+        </div>
+
+        <!-- Ores -->
+        <div class="ore" id="ore-1" onclick="collectOreWithFruit(this, 'Frame')">
+            <img src="c:\Users\User\Downloads\eternal fruit4\eternal fruit\image\Ice mineral.png" alt="Ice Ore">
+        </div>
+
+        <div class="ore" id="ore-2" onclick="collectOreWithFruit(this, 'Frame')">
+            <img src="c:\Users\User\Downloads\eternal fruit4\eternal fruit\image\Ice mineral.png" alt="Ice Ore">
+        </div>
+
+        <div class="ore" id="ore-3" onclick="collectOreWithFruit(this, 'Frame')">
+            <img src="c:\Users\User\Downloads\eternal fruit4\eternal fruit\image\Ice mineral.png" alt="Ice Ore">
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        function goBack() {
+            window.location.href = '../game.html';
+        }
+
+        // Create snowflakes
+        function createSnowflakes() {
+            const container = document.getElementById('island-container');
+            for (let i = 0; i < 15; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.innerHTML = '❄';
+                snowflake.style.left = Math.random() * 100 + '%';
+                snowflake.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                snowflake.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(snowflake);
+            }
+        }
+
+        createSnowflakes();
+    </script>
+</body>
+
+</html>
