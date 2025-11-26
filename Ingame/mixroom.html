@@ -104,8 +104,8 @@
             }
 
             .popup-content {
-                width: clamp(1200px, 70vw, 1800px);
-                max-width: min(90vw, 1800px);
+                width: clamp(500px, 35vw, 700px);
+                max-width: min(45vw, 700px);
             }
         }
 
@@ -120,24 +120,24 @@
             }
 
             .popup-content {
-                width: clamp(1000px, 65vw, 1500px);
-                max-width: min(85vw, 1500px);
+                width: clamp(450px, 35vw, 600px);
+                max-width: min(45vw, 600px);
             }
         }
 
         /* Standard Desktop (1366px - 1919px) */
         @media (min-width: 1366px) and (max-width: 1919px) {
             .popup-content {
-                width: clamp(900px, 75vw, 1300px);
-                max-width: min(85vw, 1300px);
+                width: clamp(380px, 38vw, 520px);
+                max-width: min(48vw, 520px);
             }
         }
 
         /* Laptop (1025px - 1365px) */
         @media (min-width: 1025px) and (max-width: 1365px) {
             .popup-content {
-                width: clamp(700px, 80vw, 1100px);
-                max-width: min(85vw, 1100px);
+                width: clamp(340px, 42vw, 480px);
+                max-width: min(52vw, 480px);
             }
         }
 
@@ -161,8 +161,8 @@
             align-items: center;
             position: relative;
             background: transparent;
-            width: clamp(320px, 85vw, 1400px);
-            max-width: min(90vw, 1400px);
+            width: clamp(250px, 40vw, 550px);
+            max-width: min(50vw, 550px);
         }
 
 
@@ -180,8 +180,8 @@
             }
 
             .popup-content {
-                width: clamp(600px, 85vw, 900px);
-                max-width: 90vw;
+                width: clamp(300px, 48vw, 420px);
+                max-width: 58vw;
             }
         }
 
@@ -333,8 +333,8 @@
                 let imagePath = item.image.replace('../', '');
                 itemImg.src = '../' + imagePath;
                 itemImg.alt = item.name;
-                itemImg.style.width = '50px';
-                itemImg.style.height = '50px';
+                itemImg.style.width = '35px';
+                itemImg.style.height = '35px';
                 itemImg.style.objectFit = 'contain';
                 itemImg.style.filter = 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))';
                 
@@ -393,8 +393,8 @@
             let imagePath = item.image.replace('../', '');
             itemImg.src = '../' + imagePath;
             itemImg.alt = item.name;
-            itemImg.style.width = '110px';
-            itemImg.style.height = '110px';
+            itemImg.style.width = '45px';
+            itemImg.style.height = '45px';
             itemImg.style.objectFit = 'contain';
             itemImg.style.filter = 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))';
             
@@ -434,8 +434,8 @@
             let imagePath = item.image.replace('../', '');
             itemImg.src = '../' + imagePath;
             itemImg.alt = item.name;
-            itemImg.style.width = '110px';
-            itemImg.style.height = '110px';
+            itemImg.style.width = '45px';
+            itemImg.style.height = '45px';
             itemImg.style.objectFit = 'contain';
             itemImg.style.filter = 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))';
             
@@ -500,8 +500,8 @@
             const resultImg = document.createElement('img');
             resultImg.src = resultImage;
             resultImg.alt = resultName;
-            resultImg.style.width = '80px';
-            resultImg.style.height = '80px';
+            resultImg.style.width = '35px';
+            resultImg.style.height = '35px';
             resultImg.style.objectFit = 'contain';
             resultImg.style.filter = 'drop-shadow(2px 2px 4px rgba(0,0,0,0.3))';
             
