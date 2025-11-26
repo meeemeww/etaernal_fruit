@@ -2,7 +2,7 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Mix Room - Eternal Fruit</title>
 
     <style>
@@ -16,6 +16,9 @@
         body {
             font-family: Arial, sans-serif;
             overflow: hidden;
+            width: 100%;
+            height: 100%;
+            position: fixed;
         }
 
         /* Mixroom Background */
@@ -24,6 +27,7 @@
             height: 100vh;
             background: url('../image/Purple_Background.png') center/cover no-repeat;
             position: relative;
+            display: flex;
         }
 
         /* Back Button */
@@ -45,9 +49,13 @@
             font-weight: bold;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             transition: all 0.3s;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            z-index: 10;
         }
 
-        .back-button:hover {
+        .back-button:hover,
+        .back-button:active {
             transform: scale(1.1);
             background: rgba(255, 255, 255, 1);
         }
@@ -59,125 +67,92 @@
             cursor: pointer;
             z-index: 100;
             transition: transform 0.3s;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         }
 
         #Marble_icon { 
-            bottom: clamp(10px, 2vh, 30px); 
-            left: clamp(200px, 20vw, 400px); 
-            width: clamp(100px, 10vw, 180px); 
+            bottom: clamp(20px, 3vh, 50px); 
+            left: clamp(150px, 18vw, 380px); 
+            width: clamp(80px, 9vw, 180px);
+            height: auto;
         }
         #Book_icon { 
-            top: clamp(300px, 50vh, 500px); 
-            right: clamp(300px, 30vw, 550px); 
-            width: clamp(120px, 12vw, 220px); 
+            top: clamp(250px, 45vh, 500px); 
+            right: clamp(250px, 28vw, 580px); 
+            width: clamp(100px, 11vw, 220px);
+            height: auto;
         }
 
         #Marble_icon:hover,
-        #Book_icon:hover {
+        #Book_icon:hover,
+        #Marble_icon:active,
+        #Book_icon:active {
             transform: scale(1.1);
         }
 
-        /* Large Desktop (2560px and above) */
+        /* Ultra-Wide Desktop (2560px and above) */
         @media (min-width: 2560px) {
-            .back-button {
-                width: 90px;
-                height: 90px;
-                font-size: 36px;
-                top: 30px;
-                left: 30px;
-            }
-
             #Marble_icon {
-                bottom: 30px;
-                left: 450px;
-                width: 220px;
+                width: clamp(180px, 10vw, 240px);
+                left: clamp(350px, 20vw, 450px);
             }
 
             #Book_icon {
-                top: 550px;
-                right: 650px;
-                width: 270px;
+                width: clamp(200px, 12vw, 280px);
+                right: clamp(550px, 30vw, 700px);
+            }
+
+            .popup-content {
+                width: clamp(1200px, 70vw, 1800px);
+                max-width: min(90vw, 1800px);
             }
         }
 
-        /* Standard Desktop (1920px - 2559px) */
+        /* Large Desktop (1920px - 2559px) */
         @media (min-width: 1920px) and (max-width: 2559px) {
-            .back-button {
-                width: 75px;
-                height: 75px;
-                font-size: 30px;
-                top: 25px;
-                left: 25px;
-            }
-
             #Marble_icon {
-                bottom: 25px;
-                left: 380px;
-                width: 190px;
+                width: clamp(160px, 9.5vw, 200px);
             }
 
             #Book_icon {
-                top: 480px;
-                right: 580px;
-                width: 240px;
+                width: clamp(180px, 11vw, 250px);
+            }
+
+            .popup-content {
+                width: clamp(1000px, 65vw, 1500px);
+                max-width: min(85vw, 1500px);
             }
         }
 
-        /* Desktop (1366px - 1919px) */
+        /* Standard Desktop (1366px - 1919px) */
         @media (min-width: 1366px) and (max-width: 1919px) {
-            .back-button {
-                width: 65px;
-                height: 65px;
-                font-size: 26px;
-                top: 20px;
-                left: 20px;
-            }
-
-            #Marble_icon {
-                bottom: 20px;
-                left: 300px;
-                width: 160px;
-            }
-
-            #Book_icon {
-                top: 400px;
-                right: 450px;
-                width: 200px;
+            .popup-content {
+                width: clamp(900px, 75vw, 1300px);
+                max-width: min(85vw, 1300px);
             }
         }
 
-        /* Small Desktop (1025px - 1365px) */
+        /* Laptop (1025px - 1365px) */
         @media (min-width: 1025px) and (max-width: 1365px) {
-            .back-button {
-                width: 55px;
-                height: 55px;
-                font-size: 22px;
-                top: 15px;
-                left: 15px;
-            }
-
-            #Marble_icon {
-                bottom: 15px;
-                left: 250px;
-                width: 140px;
-            }
-
-            #Book_icon {
-                top: 350px;
-                right: 380px;
-                width: 180px;
+            .popup-content {
+                width: clamp(700px, 80vw, 1100px);
+                max-width: min(85vw, 1100px);
             }
         }
 
-        /* Popup styling (เหมือน Profile) */
+        /* Popup styling */
         .popup {
             display: none;
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
             z-index: 1000;
-            pointer-events: auto;
         }
 
         .popup-content {
@@ -185,136 +160,81 @@
             justify-content: center;
             align-items: center;
             position: relative;
-        }
-
-        /* Close Button */
-        .close-btn {
-            position: absolute;
-            top: 30px;
-            right: 350px;
-            width: 30px;
-            height: 30px;
             background: transparent;
-            border: none;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 24px;
-            font-weight: bold;
-            color: transparent;
-            z-index: 1001;
-            transition: none;
+            width: clamp(320px, 85vw, 1400px);
+            max-width: min(90vw, 1400px);
         }
 
-        .close-btn:hover {
-            background: transparent;
-            transform: none;
-        }
 
-        /* Desktop Responsive for Mixing Popup */
-        /* Large Desktop (2560px and above) */
-        @media (min-width: 2560px) {
-            #MarblePopup .popup-content {
-                width: 1600px !important;
-                max-width: 1600px !important;
+
+        /* Tablet (769px - 1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            #Marble_icon {
+                width: clamp(90px, 14vw, 140px);
+                left: clamp(120px, 16vw, 200px);
             }
 
-            #MarblePopup #fruit-grid,
-            #MarblePopup #ore-grid {
-                width: 15% !important;
-                height: 23% !important;
+            #Book_icon {
+                width: clamp(110px, 15vw, 170px);
+                right: clamp(180px, 25vw, 320px);
             }
 
-            #MarblePopup #result-grid {
-                width: 13% !important;
-                height: 19% !important;
-            }
-
-            #MarblePopup .popup-content > div[onclick*="closePopup"] {
-                width: 8% !important;
-                height: 12% !important;
-                top: 4.5% !important;
-                right: 5.5% !important;
+            .popup-content {
+                width: clamp(600px, 85vw, 900px);
+                max-width: 90vw;
             }
         }
 
-        /* Standard Desktop (1920px - 2559px) */
-        @media (min-width: 1920px) and (max-width: 2559px) {
-            #MarblePopup .popup-content {
-                width: 1400px !important;
-                max-width: 1400px !important;
+        /* Mobile & Small Tablet (481px - 768px) */
+        @media (min-width: 481px) and (max-width: 768px) {
+            #Marble_icon {
+                width: clamp(70px, 16vw, 110px);
+                left: clamp(80px, 12vw, 140px);
+                bottom: clamp(15px, 2.5vh, 35px);
             }
 
-            #MarblePopup #fruit-grid,
-            #MarblePopup #ore-grid {
-                width: 14.5% !important;
-                height: 22.5% !important;
+            #Book_icon {
+                width: clamp(85px, 18vw, 130px);
+                right: clamp(120px, 20vw, 200px);
+                top: clamp(180px, 35vh, 300px);
             }
 
-            #MarblePopup #result-grid {
-                width: 12.5% !important;
-                height: 18.5% !important;
-            }
-
-            #MarblePopup .popup-content > div[onclick*="closePopup"] {
-                width: 7.5% !important;
-                height: 11.5% !important;
-                top: 4.8% !important;
-                right: 5.8% !important;
+            .popup-content {
+                width: 95vw;
+                max-width: 95vw;
             }
         }
 
-        /* Desktop (1366px - 1919px) */
-        @media (min-width: 1366px) and (max-width: 1919px) {
-            #MarblePopup .popup-content {
-                width: 1200px !important;
-                max-width: 1200px !important;
+        /* Small Mobile (up to 480px) */
+        @media (max-width: 480px) {
+            #Marble_icon {
+                width: clamp(60px, 18vw, 90px);
+                left: clamp(50px, 10vw, 100px);
+                bottom: clamp(10px, 2vh, 25px);
             }
 
-            #MarblePopup #fruit-grid,
-            #MarblePopup #ore-grid {
-                width: 14% !important;
-                height: 22% !important;
+            #Book_icon {
+                width: clamp(70px, 20vw, 110px);
+                right: clamp(80px, 15vw, 140px);
+                top: clamp(150px, 30vh, 250px);
             }
 
-            #MarblePopup #result-grid {
-                width: 12% !important;
-                height: 18% !important;
-            }
-
-            #MarblePopup .popup-content > div[onclick*="closePopup"] {
-                width: 7% !important;
-                height: 11% !important;
-                top: 5% !important;
-                right: 6% !important;
+            .popup-content {
+                width: 98vw;
+                max-width: 98vw;
             }
         }
 
-        /* Small Desktop (1025px - 1365px) */
-        @media (min-width: 1025px) and (max-width: 1365px) {
-            #MarblePopup .popup-content {
-                width: 1000px !important;
-                max-width: 1000px !important;
+        /* Landscape Mode */
+        @media (max-height: 600px) and (orientation: landscape) {
+            #Marble_icon {
+                width: clamp(50px, 10vh, 90px);
+                bottom: clamp(8px, 1.5vh, 20px);
             }
 
-            #MarblePopup #fruit-grid,
-            #MarblePopup #ore-grid {
-                width: 14% !important;
-                height: 22% !important;
-            }
-
-            #MarblePopup #result-grid {
-                width: 12% !important;
-                height: 18% !important;
-            }
-
-            #MarblePopup .popup-content > div[onclick*="closePopup"] {
-                width: 7% !important;
-                height: 11% !important;
-                top: 5% !important;
-                right: 6% !important;
+            #Book_icon {
+                width: clamp(60px, 12vh, 110px);
+                top: clamp(100px, 25vh, 180px);
             }
         }
     </style>
@@ -333,8 +253,8 @@
 
     <!-- Popups -->
     <div id="MarblePopup" class="popup">
-        <div class="popup-content" style="width: min(95vw, 1400px); max-width: 1400px; position: relative;">
-            <img src="../image/mixing.png?v=20251126" alt="Marble" style="width: 100%; height: auto; object-fit: contain;">
+        <div class="popup-content" style="position: relative;">
+            <img src="../image/mixing.png?v=20251126" alt="Marble" style="width: 100%; height: auto; object-fit: contain; display: block;">
             <!-- Fruit Selection Grid -->
             <div id="fruit-grid" style="position: absolute; top: 22%; left: 14%; width: 14%; height: 22%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; border: 2px solid transparent;">
             </div>
@@ -345,19 +265,19 @@
             <div id="result-grid" style="position: absolute; top: 24%; left: 63%; width: 12%; height: 18%; display: flex; align-items: center; justify-content: center; padding: 0px; overflow: visible; background: #300F00; border: none;">
             </div>
             <!-- Mix Button -->
-            <button onclick="mixItems()" style="position: absolute; top: 55%; left: 50%; transform: translateX(-50%); width: 25%; height: 9%; background: transparent; border: none; font-size: 0px; cursor: pointer;"></button>
+            <button onclick="mixItems()" style="position: absolute; top: 55%; left: 50%; transform: translateX(-50%); width: 25%; height: 9%; background: transparent; border: none; font-size: 0px; cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation;"></button>
             <!-- Inventory Grid -->
             <div id="mixing-inventory" style="position: absolute; bottom: 11%; left: 50%; transform: translateX(-50%); width: 78%; height: 24%; display: grid; grid-template-columns: repeat(7, 1fr); grid-template-rows: repeat(2, 1fr); gap: 1%; padding: 0px; overflow: visible;">
             </div>
             <!-- Close Button Area -->
-            <div onclick="closePopup('MarblePopup')" style="position: absolute; top: 5%; right: 6%; width: 7%; height: 11%; cursor: pointer; z-index: 99999; background: transparent; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0px;">×</div>
+            <div onclick="closePopup('MarblePopup')" style="position: absolute; top: 5%; right: 6%; width: 7%; height: 11%; cursor: pointer; z-index: 99999; background: transparent; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0px; -webkit-tap-highlight-color: transparent; touch-action: manipulation;">×</div>
         </div>
     </div>
 
     <div id="BookPopup" class="popup">
-        <div class="popup-content" style="width: 90vw; max-width: 1400px;">
-            <img src="../image/Eternal_book.png" alt="Book" style="width: 100%; height: auto; max-height: 95vh; object-fit: contain;">
-            <button class="close-btn" onclick="closePopup('BookPopup')">&times;</button>
+        <div class="popup-content" style="position: relative;">
+            <img src="../image/Eternal_book.png" alt="Book" style="width: 100%; height: auto; max-height: 95vh; object-fit: contain; display: block;">
+            <div onclick="closePopup('BookPopup')" style="position: absolute; top: 3%; right: 3%; width: clamp(40px, 5vw, 60px); height: clamp(40px, 5vw, 60px); cursor: pointer; z-index: 1001; background: transparent; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0px; -webkit-tap-highlight-color: transparent; touch-action: manipulation;">×</div>
         </div>
     </div>
 
